@@ -1,5 +1,6 @@
 ---
 title: "Amherst College Visit"
+date: "November 15, 2022"
 editor: source
 ---
 
