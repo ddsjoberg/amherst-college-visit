@@ -16,8 +16,6 @@ A critical part of the work of statisticians, data scientists, and analysts is s
 The [**gtsummary**](https://www.danieldsjoberg.com/gtsummary/) package was created to streamline these everyday analysis tasks by allowing users to easily create reproducible summaries of data sets, regression models, survey data, and survival data with a simple interface and very little code.
 The package follows a tidy framework, making it easy to integrate with standard data workflows, and offers many table customization features through function arguments, helper functions, and custom themes.
 
-## Slides
-
 [View slides in full screen](/reproducibility/index.html)
 
 ```{=html}
@@ -25,8 +23,6 @@ The package follows a tidy framework, making it easy to integrate with standard 
 ```
 
 # Multiple Imputations
-
-## Slides
 
 [View slides in full screen](/mice/index.html)
 
