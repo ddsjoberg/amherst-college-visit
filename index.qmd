@@ -1,6 +1,5 @@
 ---
-title: "Reproducible Reporting with R + gtsummary"
-subtitle: "Amherst College"
+title: "Amherst College Visit"
 editor: source
 ---
 
@@ -8,7 +7,7 @@ editor: source
 
 ------------------------------------------------------------------------
 
-# Overview 
+# Reproducible Reporting
 <a href="http://www.danieldsjoberg.com/gtsummary-amherst-college/"><img src="images/trans - gt.png" align="right" height="138" /></a>
 
 The [**gtsummary**](https://www.danieldsjoberg.com/gtsummary/) package provides an elegant and flexible way to create publication-ready summary tables in **R**. 
@@ -16,12 +15,22 @@ A critical part of the work of statisticians, data scientists, and analysts is s
 The [**gtsummary**](https://www.danieldsjoberg.com/gtsummary/) package was created to streamline these everyday analysis tasks by allowing users to easily create reproducible summaries of data sets, regression models, survey data, and survival data with a simple interface and very little code.
 The package follows a tidy framework, making it easy to integrate with standard data workflows, and offers many table customization features through function arguments, helper functions, and custom themes.
 
-# Slides
+## Slides
 
 [View slides in full screen](/reproducibility/index.html)
 
 ```{=html}
 <iframe class="slide-deck" src="/reproducibility/" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+# Multiple Imputations
+
+## Slides
+
+[View slides in full screen](/mice/index.html)
+
+```{=html}
+<iframe class="slide-deck" src="/mice/" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 
 # Speaker
