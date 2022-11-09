@@ -1,0 +1,51 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!reproducibility/[0-9]*.qmd"
+    - "!mice/[0-9]*.qmd"
+    
+website:
+  page-navigation: true
+  title: "Clinical Reporting with {gtsummary}"
+  site-url: "https://www.danieldsjoberg.com/gtsummary-amherst-college/"
+  favicon: "images/video-still-seal-2020.png"
+  
+  repo-url: https://github.com/ddsjoberg/gtsummary-amherst-college
+  repo-actions: [edit, issue]
+
+  open-graph: true
+  twitter-card:
+    creator: "@statistishdan"
+    image: "/images/video-still-seal-2020.png"
+
+  page-footer:
+    left: "This page is built with ❤️ and [Quarto](https://quarto.org/). Inspired by [@minebocek](https://twitter.com/minebocek)"
+    right: "&copy; Copyright 2022, Daniel D. Sjoberg"
+    background: "#311a4d"
+
+  sidebar:
+    background: "#311a4d"
+    logo: "images/video-still-seal-2020.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/ddsjoberg/gtsummary-amherst-college
+        text: GitHub
+    style: docked
+    contents:
+     - href: index.qmd
+       text: Home
+
+format:
+  html:
+    theme: [cosmo, theme.scss]
+    toc: true
+    code-copy: true
+    code-overflow: scroll
+    mainfont: "Atkinson Hyperlegible"
+    highlight-style: a11y
+
+editor: source
+

@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+_freeze
+_site
+reproducibility/index_cache
+reproducibility/index_files
