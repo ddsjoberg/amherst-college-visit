@@ -20,3 +20,7 @@ cache: true
 {{< include 00-setup.qmd >}}
 
 {{< include 01-survival.qmd >}}
+
+{{< include 02-mice.qmd >}}
+
+{{< include 03-case-study.qmd >}}

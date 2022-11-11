@@ -1,0 +1,31 @@
+# Case Study
+
+## Case Study: EU Article
+
+![](images/eu-article.png){fig-align="center"}
+
+* We'll focus on the analyses among the participants >60 years old
+
+## Design: Case-Cohort
+
+```{r}
+tibble(
+  Cohort =  "Age > 60",
+  `Total N` = 5263,
+  `PCa Deaths` = 227,
+  `PCa Dx` = 780,
+  `PCa with Markers` = 702,
+  `Control with Markers` = 1753,
+  `Control without Markers` = 2730
+) %>%
+  gt::gt() %>%
+  gt::tab_source_note("PCa = Prostate Cancer")
+```
+
+Study Aims:
+
+1. Estimate the distribution of PSA.
+
+1. Are the kallikrein markers better at predicting prostate cancer death than PSA alone?
+
+1. Estimate the reclassification using additional markers compared to PSA alone.

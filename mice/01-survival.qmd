@@ -101,21 +101,34 @@ ggplot() +
 tibble(
   id = factor(1:6),
   time = 1:6,
-  dead = ifelse(time %% 2 == 0, "Yes", "No")
+  dead = ifelse(time %% 2 == 0, "Died", "Censored")
 ) |> 
   ggplot() +
   geom_segment(aes(y = id, yend = id, x = 0, xend = time), 
                linewidth = 2.5, alpha = 0.5) +
-  geom_point(aes(x = time, y = id, shape = dead), size = 3) +
+  geom_point(aes(x = time, y = id, shape = dead), size = 3.5) +
   scale_shape_manual(values = c(1, 4)) +
   scale_x_continuous(n.breaks = 7, expand = c(0, 0.04)) +
   theme_classic() +
   labs(
     y = "Patient ID",
     x = "Time",
-    shape = "Died"
+    shape = NULL
   )
 ```
 
+## What if I can only follow for 2 years?
 
-# Another Slide
+* A key feature of survival data is **censoring**
+
+* A subject may be censored due to:
+
+  * Loss to follow-up
+  
+  * Withdrawal from study
+  
+  * No event by end of fixed study period
+  
+* Survival analysis techniques provide a way to appropriately account for censored patients in the analysis
+
+* The Kaplan-Meier estimate of survival probability at a given time is the product of these conditional probabilities up until that given time.

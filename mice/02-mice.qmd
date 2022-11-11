@@ -1,0 +1,11 @@
+# Multiple Imputation Review
+
+## MICE Review
+
+Multiple imputation consists of three steps:
+
+1. Imputation step. M imputations (completed datasets) are generated under some chosen imputation model.
+
+2. Completed-data analysis (estimation) step. The desired analysis is performed separately on each imputation m = 1, . . . , M. This is called completed-data analysis and is the primary analysis to be performed once missing data have been imputed.
+
+3. Pooling step. The results obtained from M completed-data analyses are combined into a single multiple-imputation result. Variance is estimated by taking into the account with variability within each of the 'completed-data' analyses, and the variation across the M analyses.
