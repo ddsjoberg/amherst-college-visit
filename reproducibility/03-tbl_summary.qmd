@@ -299,7 +299,7 @@ sm_trial |>
 ```{r}
 #| label: 'summary-modified'
 #| output-location: "column"
-#| code-line-numbers: "4,5,6,7,8,9,10,11,12,13"
+#| code-line-numbers: "4,5,6,7,8,9,10,11,12,13,14,15,16"
 tbl <-
   sm_trial |> 
   tbl_summary(by = trt, 
@@ -309,7 +309,8 @@ tbl <-
       stat_2 ~ "**Group B**"
   ) |> 
   modify_spanning_header(
-    all_stat_cols() ~ "**Drug**") |> 
+    all_stat_cols() ~ "**Drug**"
+  ) |> 
   modify_footnote(
     all_stat_cols() ~ 
       paste("median (IQR) for continuous;",
@@ -436,7 +437,8 @@ survey::svydesign(
   ) |>
   add_p() |>
   modify_spanning_header(
-    all_stat_cols() ~ "**Survived**")
+    all_stat_cols() ~ "**Survived**"
+  )
 ```
 
 ## Survival outcomes with tbl_survfit()

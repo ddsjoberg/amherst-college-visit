@@ -1,0 +1,64 @@
+# Survival Analysis Review
+
+## PDF, CDF, and Survival
+
+$$
+f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+$$
+
+```{r}
+#| fig-align: "center"
+ggplot() +
+  stat_function(fun = \(x) dexp(x, rate = 1 / 1.5), 
+                xlim = c(0, 10.2), linewidth = 1.5, fill = "#3f1f69", geom = "area", alpha = 0.5) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 1.05)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 10.2), n.breaks = 8) +
+  theme_void() +
+  theme(axis.text = element_text(size = 10)) +
+  labs(y = NULL)
+```
+
+
+## PDF, CDF, and Survival
+
+$$
+F(x) = \int_{t = 0}^{x} f(t); \quad f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+$$
+
+```{r}
+#| fig-align: "center"
+ggplot() +
+  stat_function(fun = \(x) pexp(x, rate = 1 / 1.5),
+                xlim = c(0, 10.2), linewidth = 1.5, fill = "#3f1f69", geom = "area", alpha = 0.5) +
+   geom_hline(yintercept = 1, linetype = "dashed", color = "#aeaeb2", linewidth = 1.5) +
+ scale_y_continuous(expand = c(0, 0), limits = c(0, 1.05)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 10.2), n.breaks = 8) +
+  theme_void() +
+  theme(axis.text = element_text(size = 10)) +
+  labs(y = NULL)
+```
+
+
+## PDF, CDF, and Survival
+
+$$
+S(t) = 1 - F(t); \quad F(x) = \int_{t = 0}^{x} f(t); \quad f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+$$
+
+```{r}
+#| fig-align: "center"
+ggplot() +
+  stat_function(fun = \(x) 1 - pexp(x, rate = 1 / 1.5),
+                xlim = c(0, 10.2), linewidth = 1.5, fill = "#3f1f69", geom = "area", alpha = 0.5) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "#aeaeb2", linewidth = 1.5) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 1.05)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 10.2), n.breaks = 8) +
+  theme_void() +
+  theme(axis.text = element_text(size = 10)) +
+  labs(y = NULL)
+```
+
+## How to estimate this distribution?
+
+
+# Another Slide

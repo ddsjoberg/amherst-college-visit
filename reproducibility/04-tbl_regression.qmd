@@ -120,16 +120,3 @@ tbl_uvreg
 -   Specify model `method`, `method.args`, and the `response` variable
 
 -   Arguments and helper functions like `exponentiate`, `bold_*()`, `add_global_p()` can also be used with `tbl_uvregression()`
-
-## Break
-
-![](images/sister-act-2-dance.gif){width=100%}
-
-::: aside
-[Sister Act 2: Back in the Habit](https://www.youtube.com/watch?v=GqqhKyMZHe0)
-:::
-```{r}
-#| echo: false
-#| cache: false
-# countdown(minutes = 10)
-```

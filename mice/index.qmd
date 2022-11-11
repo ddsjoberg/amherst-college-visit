@@ -1,0 +1,22 @@
+---
+title: "Multiple Imputation"
+author: "Daniel D. Sjoberg"
+footer:  "[Multiple Imputation](https://www.danieldsjoberg.com/gtsummary-amherst-college/)"
+logo: "images/DALL·E 2022-11-09 15.18.48 - pencil drawing of a mouse.png"
+editor: source
+format: 
+  revealjs: 
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  output: asis
+  freeze: auto
+cache: true
+---
+
+{{< include 00-setup.qmd >}}
+
+{{< include 01-background.qmd >}}
