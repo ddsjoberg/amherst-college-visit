@@ -7,6 +7,55 @@
     "text": "Reproducible Reporting\n\nThe gtsummary package provides an elegant and flexible way to create publication-ready summary tables in R. A critical part of the work of statisticians, data scientists, and analysts is summarizing data sets and regression models in R and publishing or sharing polished summary tables. The gtsummary package was created to streamline these everyday analysis tasks by allowing users to easily create reproducible summaries of data sets, regression models, survey data, and survival data with a simple interface and very little code. The package follows a tidy framework, making it easy to integrate with standard data workflows, and offers many table customization features through function arguments, helper functions, and custom themes.\nView slides in full screen\n\n\n\nMultiple Imputations\nView slides in full screen\n\n\n\nSpeaker\n\nDaniel D. Sjoberg (he/him) is a Senior Biostatistician at Memorial Sloan Kettering Cancer Center in New York City and a DrPH candidate in Biostatistics at Columbia University. His research interests include adaptive methods in clinical trials, precision medicine, and predictive modeling. He also enjoys R package development, creating many packages available on CRAN, R-Universe, GitHub, and internally at MSKCC. Daniel is the winner of the 2021 American Statistical Association (ASA) Innovation in Statistical Programming and Analytics award."
   },
   {
+    "objectID": "mice/index.html#acknowledgements",
+    "href": "mice/index.html#acknowledgements",
+    "title": "Multiple Imputation",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\n\n\n\nThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA4.0)."
+  },
+  {
+    "objectID": "mice/index.html#daniel-d.-sjoberg",
+    "href": "mice/index.html#daniel-d.-sjoberg",
+    "title": "Multiple Imputation",
+    "section": "Daniel D. Sjoberg",
+    "text": "Daniel D. Sjoberg\n\n\n danieldsjoberg.com\n @statistishdan\n linkedin.com/in/ddsjoberg\n github.com/ddsjoberg"
+  },
+  {
+    "objectID": "mice/index.html#questions",
+    "href": "mice/index.html#questions",
+    "title": "Multiple Imputation",
+    "section": "Questions",
+    "text": "Questions\n\n\n\nPlease feel free to ask questions at any time"
+  },
+  {
+    "objectID": "mice/index.html#pdf-cdf-and-survival",
+    "href": "mice/index.html#pdf-cdf-and-survival",
+    "title": "Multiple Imputation",
+    "section": "PDF, CDF, and Survival",
+    "text": "PDF, CDF, and Survival\n\\[\nf(x) = \\frac{1}{\\lambda} e^{\\frac{x}{\\lambda}}; \\quad X \\sim Exp(\\lambda = 1.5)\n\\]"
+  },
+  {
+    "objectID": "mice/index.html#pdf-cdf-and-survival-1",
+    "href": "mice/index.html#pdf-cdf-and-survival-1",
+    "title": "Multiple Imputation",
+    "section": "PDF, CDF, and Survival",
+    "text": "PDF, CDF, and Survival\n\\[\nF(x) = \\int_{t = 0}^{x} f(t); \\quad f(x) = \\frac{1}{\\lambda} e^{\\frac{x}{\\lambda}}; \\quad X \\sim Exp(\\lambda = 1.5)\n\\]"
+  },
+  {
+    "objectID": "mice/index.html#pdf-cdf-and-survival-2",
+    "href": "mice/index.html#pdf-cdf-and-survival-2",
+    "title": "Multiple Imputation",
+    "section": "PDF, CDF, and Survival",
+    "text": "PDF, CDF, and Survival\n\\[\nS(t) = 1 - F(t); \\quad F(x) = \\int_{t = 0}^{x} f(t); \\quad f(x) = \\frac{1}{\\lambda} e^{\\frac{x}{\\lambda}}; \\quad X \\sim Exp(\\lambda = 1.5)\n\\]"
+  },
+  {
+    "objectID": "mice/index.html#how-to-estimate-this-distribution",
+    "href": "mice/index.html#how-to-estimate-this-distribution",
+    "title": "Multiple Imputation",
+    "section": "How to estimate this distribution?",
+    "text": "How to estimate this distribution?"
+  },
+  {
     "objectID": "reproducibility/index.html#acknowledgements",
     "href": "reproducibility/index.html#acknowledgements",
     "title": "Reproducible Reporting with R + gtsummary",
@@ -151,7 +200,7 @@
     "href": "reproducibility/index.html#update-tbl_summary-with-modify_",
     "title": "Reproducible Reporting with R + gtsummary",
     "section": "Update tbl_summary() with modify_*()",
-    "text": "Update tbl_summary() with modify_*()\n\n\ntbl <-\n  sm_trial |> \n  tbl_summary(by = trt, \n              missing = \"no\") |>\n  modify_header(\n      stat_1 ~ \"**Group A**\",\n      stat_2 ~ \"**Group B**\"\n  ) |> \n  modify_spanning_header(\n    all_stat_cols() ~ \"**Drug**\") |> \n  modify_footnote(\n    all_stat_cols() ~ \n      paste(\"median (IQR) for continuous;\",\n            \"n (%) for categorical\")\n  )\ntbl\n\n\n\n\n\n\nCharacteristic\n\n\nDrug\n\n\n\n\nGroup A1\n\n\nGroup B1\n\n\n\n\n\n\nAge\n\n\n46 (37, 59)\n\n\n48 (39, 56)\n\n\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n\n\n35 (36%)\n\n\n33 (32%)\n\n\n\n\n    II\n\n\n32 (33%)\n\n\n36 (35%)\n\n\n\n\n    III\n\n\n31 (32%)\n\n\n33 (32%)\n\n\n\n\nTumor Response\n\n\n28 (29%)\n\n\n33 (34%)\n\n\n\n\n\n\n1 median (IQR) for continuous; n (%) for categorical\n\n\n\n\n\n\n\n\nUse show_header_names() to see the internal header names available for use in modify_header()"
+    "text": "Update tbl_summary() with modify_*()\n\n\ntbl <-\n  sm_trial |> \n  tbl_summary(by = trt, \n              missing = \"no\") |>\n  modify_header(\n      stat_1 ~ \"**Group A**\",\n      stat_2 ~ \"**Group B**\"\n  ) |> \n  modify_spanning_header(\n    all_stat_cols() ~ \"**Drug**\"\n  ) |> \n  modify_footnote(\n    all_stat_cols() ~ \n      paste(\"median (IQR) for continuous;\",\n            \"n (%) for categorical\")\n  )\ntbl\n\n\n\n\n\n\nCharacteristic\n\n\nDrug\n\n\n\n\nGroup A1\n\n\nGroup B1\n\n\n\n\n\n\nAge\n\n\n46 (37, 59)\n\n\n48 (39, 56)\n\n\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n\n\n35 (36%)\n\n\n33 (32%)\n\n\n\n\n    II\n\n\n32 (33%)\n\n\n36 (35%)\n\n\n\n\n    III\n\n\n31 (32%)\n\n\n33 (32%)\n\n\n\n\nTumor Response\n\n\n28 (29%)\n\n\n33 (34%)\n\n\n\n\n\n\n1 median (IQR) for continuous; n (%) for categorical\n\n\n\n\n\n\n\n\nUse show_header_names() to see the internal header names available for use in modify_header()"
   },
   {
     "objectID": "reproducibility/index.html#column-names",
@@ -200,7 +249,7 @@
     "href": "reproducibility/index.html#survey-data-with-tbl_svysummary",
     "title": "Reproducible Reporting with R + gtsummary",
     "section": "Survey data with tbl_svysummary()",
-    "text": "Survey data with tbl_svysummary()\n\n\nsurvey::svydesign(\n  ids = ~1, \n  data = as.data.frame(Titanic), \n  weights = ~Freq\n) |>\n  tbl_svysummary(\n    by = Survived,\n    include = c(Class, Sex)\n  ) |>\n  add_p() |>\n  modify_spanning_header(\n    all_stat_cols() ~ \"**Survived**\")\n\n\n\n\n\n\nCharacteristic\n\n\nSurvived\n\n\np-value2\n\n\n\n\nNo, N = 1,4901\n\n\nYes, N = 7111\n\n\n\n\n\n\nClass\n\n\n\n\n\n\n0.7\n\n\n\n\n    1st\n\n\n122 (8.2%)\n\n\n203 (29%)\n\n\n\n\n\n\n    2nd\n\n\n167 (11%)\n\n\n118 (17%)\n\n\n\n\n\n\n    3rd\n\n\n528 (35%)\n\n\n178 (25%)\n\n\n\n\n\n\n    Crew\n\n\n673 (45%)\n\n\n212 (30%)\n\n\n\n\n\n\nSex\n\n\n\n\n\n\n0.048\n\n\n\n\n    Male\n\n\n1,364 (92%)\n\n\n367 (52%)\n\n\n\n\n\n\n    Female\n\n\n126 (8.5%)\n\n\n344 (48%)\n\n\n\n\n\n\n\n\n1 n (%)\n\n\n\n\n2 chi-squared test with Rao & Scott’s second-order correction"
+    "text": "Survey data with tbl_svysummary()\n\n\nsurvey::svydesign(\n  ids = ~1, \n  data = as.data.frame(Titanic), \n  weights = ~Freq\n) |>\n  tbl_svysummary(\n    by = Survived,\n    include = c(Class, Sex)\n  ) |>\n  add_p() |>\n  modify_spanning_header(\n    all_stat_cols() ~ \"**Survived**\"\n  )\n\n\n\n\n\n\nCharacteristic\n\n\nSurvived\n\n\np-value2\n\n\n\n\nNo, N = 1,4901\n\n\nYes, N = 7111\n\n\n\n\n\n\nClass\n\n\n\n\n\n\n0.7\n\n\n\n\n    1st\n\n\n122 (8.2%)\n\n\n203 (29%)\n\n\n\n\n\n\n    2nd\n\n\n167 (11%)\n\n\n118 (17%)\n\n\n\n\n\n\n    3rd\n\n\n528 (35%)\n\n\n178 (25%)\n\n\n\n\n\n\n    Crew\n\n\n673 (45%)\n\n\n212 (30%)\n\n\n\n\n\n\nSex\n\n\n\n\n\n\n0.048\n\n\n\n\n    Male\n\n\n1,364 (92%)\n\n\n367 (52%)\n\n\n\n\n\n\n    Female\n\n\n126 (8.5%)\n\n\n344 (48%)\n\n\n\n\n\n\n\n\n1 n (%)\n\n\n\n\n2 chi-squared test with Rao & Scott’s second-order correction"
   },
   {
     "objectID": "reproducibility/index.html#survival-outcomes-with-tbl_survfit",
@@ -243,13 +292,6 @@
     "title": "Reproducible Reporting with R + gtsummary",
     "section": "Univariate models with tbl_uvregression()",
     "text": "Univariate models with tbl_uvregression()\n\n\ntbl_uvreg <- \n  sm_trial |> \n  tbl_uvregression(\n    method = glm,\n    y = response,\n    method.args = \n      list(family = binomial),\n    exponentiate = TRUE\n  )\ntbl_uvreg\n\n\n\n\n\n\nCharacteristic\n\n\nN\n\n\nOR1\n\n\n95% CI1\n\n\np-value\n\n\n\n\n\n\nChemotherapy Treatment\n\n\n193\n\n\n\n\n\n\n\n\n\n\n    Drug A\n\n\n\n\n—\n\n\n—\n\n\n\n\n\n\n    Drug B\n\n\n\n\n1.21\n\n\n0.66, 2.24\n\n\n0.5\n\n\n\n\nAge\n\n\n183\n\n\n1.02\n\n\n1.00, 1.04\n\n\n0.10\n\n\n\n\nGrade\n\n\n193\n\n\n\n\n\n\n\n\n\n\n    I\n\n\n\n\n—\n\n\n—\n\n\n\n\n\n\n    II\n\n\n\n\n0.95\n\n\n0.45, 2.00\n\n\n0.9\n\n\n\n\n    III\n\n\n\n\n1.10\n\n\n0.52, 2.29\n\n\n0.8\n\n\n\n\n\n\n1 OR = Odds Ratio, CI = Confidence Interval\n\n\n\n\n\n\n\n\nSpecify model method, method.args, and the response variable\nArguments and helper functions like exponentiate, bold_*(), add_global_p() can also be used with tbl_uvregression()"
-  },
-  {
-    "objectID": "reproducibility/index.html#break",
-    "href": "reproducibility/index.html#break",
-    "title": "Reproducible Reporting with R + gtsummary",
-    "section": "Break",
-    "text": "Break\n\n\n\nSister Act 2: Back in the Habit"
   },
   {
     "objectID": "reproducibility/index.html#gtsummary-reporting-with-inline_text",
