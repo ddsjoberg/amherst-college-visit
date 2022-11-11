@@ -53,7 +53,21 @@
     "href": "mice/index.html#how-to-estimate-this-distribution",
     "title": "Multiple Imputation",
     "section": "How to estimate this distribution?",
-    "text": "How to estimate this distribution?"
+    "text": "How to estimate this distribution?\n\\[\nf(x) = \\frac{1}{\\lambda} e^{\\frac{x}{\\lambda}}; \\quad X \\sim Exp(\\lambda = 1.5)\n\\]"
+  },
+  {
+    "objectID": "mice/index.html#what-if-i-can-only-follow-for-2-years",
+    "href": "mice/index.html#what-if-i-can-only-follow-for-2-years",
+    "title": "Multiple Imputation",
+    "section": "What if I can only follow for 2 years?",
+    "text": "What if I can only follow for 2 years?\n\\[\nf(x) = \\frac{1}{\\lambda} e^{\\frac{x}{\\lambda}}; \\quad X \\sim Exp(\\lambda = 1.5)\n\\]"
+  },
+  {
+    "objectID": "mice/index.html#what-if-i-can-only-follow-for-2-years-1",
+    "href": "mice/index.html#what-if-i-can-only-follow-for-2-years-1",
+    "title": "Multiple Imputation",
+    "section": "What if I can only follow for 2 years?",
+    "text": "What if I can only follow for 2 years?"
   },
   {
     "objectID": "reproducibility/index.html#acknowledgements",
