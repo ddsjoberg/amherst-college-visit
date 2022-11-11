@@ -1,7 +1,7 @@
 ---
 title: "Reproducible Reporting with R + gtsummary"
 author: "Daniel D. Sjoberg"
-footer:  "[Reproducible Reporting with {gtsummary}](https://www.danieldsjoberg.com/gtsummary-amherst-college/)"
+footer:  "[Reproducible Reporting with {gtsummary}](https://www.danieldsjoberg.com/amherst-college-visit/)"
 logo: "images/gtsummary-logo.png"
 editor: source
 format: 

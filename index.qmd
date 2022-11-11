@@ -9,7 +9,7 @@ editor: source
 ------------------------------------------------------------------------
 
 # Reproducible Reporting
-<a href="http://www.danieldsjoberg.com/gtsummary-amherst-college/"><img src="images/trans - gt.png" align="right" height="138" /></a>
+<a href="http://www.danieldsjoberg.com/amherst-college-visit/"><img src="images/trans - gt.png" align="right" height="138" /></a>
 
 The [**gtsummary**](https://www.danieldsjoberg.com/gtsummary/) package provides an elegant and flexible way to create publication-ready summary tables in **R**. 
 A critical part of the work of statisticians, data scientists, and analysts is summarizing data sets and regression models in R and publishing or sharing polished summary tables.
@@ -29,6 +29,10 @@ The package follows a tidy framework, making it easy to integrate with standard 
 ```{=html}
 <iframe class="slide-deck" src="/mice/" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
+
+::: {.small}
+[Sjoberg, D.D., Vickers, A.J., Assel, M., Dahlin, A., Poon, B.Y., Ulmert, D. and Lilja, H., 2018. Twenty-year risk of prostate cancer death by midlife prostate-specific antigen and a panel of four kallikrein markers in a large population-based cohort of healthy men. European Urology, 73(6), pp.941-948.](https://github.com/ddsjoberg/amherst-college-visit/raw/main/mice/sjoberg-twenty-year-risk-of-prostate-cancer-death.pdf)
+:::
 
 # Speaker
 

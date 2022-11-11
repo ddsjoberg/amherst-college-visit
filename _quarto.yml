@@ -8,10 +8,10 @@ project:
 website:
   page-navigation: true
   title: "Clinical Reporting with {gtsummary}"
-  site-url: "https://www.danieldsjoberg.com/gtsummary-amherst-college/"
+  site-url: "https://www.danieldsjoberg.com/amherst-college-visit/"
   favicon: "images/video-still-seal-2020.png"
   
-  repo-url: https://github.com/ddsjoberg/gtsummary-amherst-college
+  repo-url: https://github.com/ddsjoberg/amherst-college-visit
   repo-actions: [edit, issue]
 
   open-graph: true
@@ -31,12 +31,16 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/ddsjoberg/gtsummary-amherst-college
+        href: https://github.com/ddsjoberg/amherst-college-visit
         text: GitHub
     style: docked
     contents:
      - href: index.qmd
        text: Home
+     - href: reproducibility/index.qmd
+       text: Reproducible Reporting
+     - href: mice/index.qmd
+       text: Multiple Imputation
 
 format:
   html:
