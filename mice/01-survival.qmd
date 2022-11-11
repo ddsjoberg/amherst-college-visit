@@ -60,5 +60,62 @@ ggplot() +
 
 ## How to estimate this distribution?
 
+$$
+f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+$$
+
+```{r}
+#| fig-align: "center"
+ggplot() +
+  stat_function(fun = \(x) dexp(x, rate = 1 / 1.5), 
+                xlim = c(0, 10.2), linewidth = 1.5, fill = "#3f1f69", geom = "area", alpha = 0.5) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 1.05)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 10.2), n.breaks = 8) +
+  theme_void() +
+  theme(axis.text = element_text(size = 10)) +
+  labs(y = NULL)
+```
+
+## What if I can only follow for 2 years?
+
+$$
+f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+$$
+
+```{r}
+#| fig-align: "center"
+ggplot() +
+  stat_function(fun = \(x) dexp(x, rate = 1 / 1.5), 
+                xlim = c(0, 10.2), linewidth = 1.5, fill = "#3f1f69", geom = "area", alpha = 0.5) +
+  geom_vline(xintercept = 2, linetype = "dashed", color = "#aeaeb2", linewidth = 1.5) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 1.05)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 10.2), n.breaks = 8) +
+  theme_void() +
+  theme(axis.text = element_text(size = 10)) +
+  labs(y = NULL)
+```
+
+## What if I can only follow for 2 years?
+
+```{r}
+tibble(
+  id = factor(1:6),
+  time = 1:6,
+  dead = ifelse(time %% 2 == 0, "Yes", "No")
+) |> 
+  ggplot() +
+  geom_segment(aes(y = id, yend = id, x = 0, xend = time), 
+               linewidth = 2.5, alpha = 0.5) +
+  geom_point(aes(x = time, y = id, shape = dead), size = 3) +
+  scale_shape_manual(values = c(1, 4)) +
+  scale_x_continuous(n.breaks = 7, expand = c(0, 0.04)) +
+  theme_classic() +
+  labs(
+    y = "Patient ID",
+    x = "Time",
+    shape = "Died"
+  )
+```
+
 
 # Another Slide
