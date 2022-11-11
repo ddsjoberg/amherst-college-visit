@@ -8,4 +8,5 @@ _freeze
 _site
 reproducibility/index_cache
 reproducibility/index_files
-
+mice/index_cache
+mice/index_files

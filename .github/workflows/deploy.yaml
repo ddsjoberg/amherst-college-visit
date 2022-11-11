@@ -20,6 +20,14 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install -y libcurl4-openssl-dev
         
+      - name: Install libharfbuzz on Linux
+        if: runner.os == 'Linux'
+        run: sudo apt-get update -y && sudo apt-get install -y libharfbuzz-dev
+        
+      - name: Install libfribidi on Linux
+        if: runner.os == 'Linux'
+        run: sudo apt-get update -y && sudo apt-get install -y libfribidi-dev
+        
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
