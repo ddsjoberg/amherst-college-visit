@@ -22,6 +22,20 @@
 <https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970>
 :::
 
+## European Urology 
+
+* European Urology journal asked all accepted manuscripts a few questions prior to publication:
+  
+  1. Was any code used to prepare these results?
+  
+  2. Are you willing to share that code?
+  
+* Of 314 accepted manuscripts with non-trivial analyses, only 40 reported that they used code.
+
+* Of the 40, 18 submitted code to the journal
+
+* All 18 sets of submitted code had some issues (no comments in the code, large amounts of repeated code prone to error, results were not exported reproducibly with R markdown/SAS ODS, etc)
+  
 ## {gtsummary} overview
 
 ::: {.columns}
