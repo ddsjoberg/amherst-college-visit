@@ -2,11 +2,21 @@
 
 ## Case Study: EU Article
 
-![](images/eu-article.png){fig-align="center"}
+<!-- ![](images/eu-article.png){fig-align="center"} -->
 
-* We'll focus on the analyses among the participants >60 years old
+![](images/eu-article.png)
 
-## Design: Case-Cohort
+-   We'll focus on the analyses among the participants \>60 years old
+
+## Study Design
+
+What is the study design?
+
+-   Nested Case-Control
+
+-   A case-control study nested within a cohort
+
+## Study Design: Nested Case-Control
 
 ```{r}
 tibble(
@@ -24,8 +34,28 @@ tibble(
 
 Study Aims:
 
-1. Estimate the distribution of PSA.
+1.  Estimate the distribution of PSA.
 
-1. Are the kallikrein markers better at predicting prostate cancer death than PSA alone?
+2.  Are the kallikrein markers better at predicting prostate cancer death than PSA alone?
 
-1. Estimate the reclassification using additional markers compared to PSA alone.
+3.  Estimate the reclassification using additional markers compared to PSA alone.
+
+## PSA Distribution
+
+![Estimated Distribution of PSA](images/psa-distribution.png)
+
+## Discrimination
+
+![](images/klk-cindex.png)
+
+## Reclassification
+
+![Risk of PCa Death](images/reclassified-risk-of-pca-death.png)
+
+:::: {.smaller}
+
+* Risk of death from prostate cancer among men providing blood at age 60--73 yr who had PSA ***≥***2.0 ng/ml, split by four-kallikrein panel risk at 7.5% at baseline.
+
+* The black line indicates the risk of prostate cancer death among all men with baseline PSA ***≥***2.0 ng/ml, gold line indicates the risk of prostate cancer death among men with PSA ***≥***2.0 ng/ml and four-kallikrein panel score ***≥***7.5% at baseline, and blue line indicates risk of prostate cancer death among men with PSA ***≥***2.0 ng/ml and four-kallikrein panel score \<7.5% at baseline.
+
+:::: 

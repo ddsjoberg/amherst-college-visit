@@ -22,7 +22,7 @@ registerS3method("knit_print", "gt_tbl", knit_print.gt_tbl)
 fa_fill <- "#3f1f69"
 ```
 
-## Acknowledgements
+## About
 
 ::: {.columns .v-center-container}
 ::: {.column width="60%"}
