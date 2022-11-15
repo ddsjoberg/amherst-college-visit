@@ -7,11 +7,11 @@
     "text": "Reproducible Reporting\n\nThe gtsummary package provides an elegant and flexible way to create publication-ready summary tables in R. A critical part of the work of statisticians, data scientists, and analysts is summarizing data sets and regression models in R and publishing or sharing polished summary tables. The gtsummary package was created to streamline these everyday analysis tasks by allowing users to easily create reproducible summaries of data sets, regression models, survey data, and survival data with a simple interface and very little code. The package follows a tidy framework, making it easy to integrate with standard data workflows, and offers many table customization features through function arguments, helper functions, and custom themes.\nView slides in full screen\n\n\n\nMultiple Imputations\nView slides in full screen\n\n\nSjoberg, D.D., Vickers, A.J., Assel, M., Dahlin, A., Poon, B.Y., Ulmert, D. and Lilja, H., 2018. Twenty-year risk of prostate cancer death by midlife prostate-specific antigen and a panel of four kallikrein markers in a large population-based cohort of healthy men. European Urology, 73(6), pp.941-948.\n\n\n\nSpeaker\n\nDaniel D. Sjoberg (he/him) is a Senior Biostatistician at Memorial Sloan Kettering Cancer Center in New York City. His research interests include adaptive methods in clinical trials, precision medicine, and predictive modeling. He also enjoys R package development, creating many packages available on CRAN, R-Universe, GitHub, and internally at MSKCC. Daniel is the winner of the 2021 American Statistical Association (ASA) Innovation in Statistical Programming and Analytics award."
   },
   {
-    "objectID": "mice/index.html#acknowledgements",
-    "href": "mice/index.html#acknowledgements",
+    "objectID": "mice/index.html#about",
+    "href": "mice/index.html#about",
     "title": "Multiple Imputation",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\n\n\n\n\nThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA4.0)."
+    "section": "About",
+    "text": "About\n\n\n\n\nThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA4.0)."
   },
   {
     "objectID": "mice/index.html#daniel-d.-sjoberg",
@@ -26,6 +26,48 @@
     "title": "Multiple Imputation",
     "section": "Questions",
     "text": "Questions\n\n\n\nPlease feel free to ask questions at any time"
+  },
+  {
+    "objectID": "mice/index.html#case-study-eu-article",
+    "href": "mice/index.html#case-study-eu-article",
+    "title": "Multiple Imputation",
+    "section": "Case Study: EU Article",
+    "text": "Case Study: EU Article\n\n\n\nWe’ll focus on the analyses among the participants >60 years old"
+  },
+  {
+    "objectID": "mice/index.html#study-design",
+    "href": "mice/index.html#study-design",
+    "title": "Multiple Imputation",
+    "section": "Study Design",
+    "text": "Study Design\nWhat is the study design?\n\nNested Case-Control\nA case-control study nested within a cohort"
+  },
+  {
+    "objectID": "mice/index.html#study-design-nested-case-control",
+    "href": "mice/index.html#study-design-nested-case-control",
+    "title": "Multiple Imputation",
+    "section": "Study Design: Nested Case-Control",
+    "text": "Study Design: Nested Case-Control\n\n\n\n\n\n\nCohort\n\n\nTotal N\n\n\nPCa Deaths\n\n\nPCa Dx\n\n\nPCa with Markers\n\n\nControl with Markers\n\n\nControl without Markers\n\n\n\n\n\n\nAge > 60\n\n\n5263\n\n\n227\n\n\n780\n\n\n702\n\n\n1753\n\n\n2730\n\n\n\n\n\n\nPCa = Prostate Cancer\n\n\n\n\n\n\nStudy Aims:\n\nEstimate the distribution of PSA.\nAre the kallikrein markers better at predicting prostate cancer death than PSA alone?\nEstimate the reclassification using additional markers compared to PSA alone."
+  },
+  {
+    "objectID": "mice/index.html#psa-distribution",
+    "href": "mice/index.html#psa-distribution",
+    "title": "Multiple Imputation",
+    "section": "PSA Distribution",
+    "text": "PSA Distribution\n\nEstimated Distribution of PSA"
+  },
+  {
+    "objectID": "mice/index.html#discrimination",
+    "href": "mice/index.html#discrimination",
+    "title": "Multiple Imputation",
+    "section": "Discrimination",
+    "text": "Discrimination"
+  },
+  {
+    "objectID": "mice/index.html#reclassification",
+    "href": "mice/index.html#reclassification",
+    "title": "Multiple Imputation",
+    "section": "Reclassification",
+    "text": "Reclassification\n\nRisk of PCa Death\n\nRisk of death from prostate cancer among men providing blood at age 60–73 yr who had PSA ≥2.0 ng/ml, split by four-kallikrein panel risk at 7.5% at baseline.\nThe black line indicates the risk of prostate cancer death among all men with baseline PSA ≥2.0 ng/ml, gold line indicates the risk of prostate cancer death among men with PSA ≥2.0 ng/ml and four-kallikrein panel score ≥7.5% at baseline, and blue line indicates risk of prostate cancer death among men with PSA ≥2.0 ng/ml and four-kallikrein panel score <7.5% at baseline."
   },
   {
     "objectID": "mice/index.html#pdf-cdf-and-survival",
@@ -81,21 +123,7 @@
     "href": "mice/index.html#mice-review",
     "title": "Multiple Imputation",
     "section": "MICE Review",
-    "text": "MICE Review\nMultiple imputation consists of three steps:\n\nImputation step. M imputations (completed datasets) are generated under some chosen imputation model.\nCompleted-data analysis (estimation) step. The desired analysis is performed separately on each imputation m = 1, . . . , M. This is called completed-data analysis and is the primary analysis to be performed once missing data have been imputed.\nPooling step. The results obtained from M completed-data analyses are combined into a single multiple-imputation result. Variance is estimated by taking into the account with variability within each of the ‘completed-data’ analyses, and the variation across the M analyses."
-  },
-  {
-    "objectID": "mice/index.html#case-study-eu-article",
-    "href": "mice/index.html#case-study-eu-article",
-    "title": "Multiple Imputation",
-    "section": "Case Study: EU Article",
-    "text": "Case Study: EU Article\n\n\nWe’ll focus on the analyses among the participants >60 years old"
-  },
-  {
-    "objectID": "mice/index.html#design-case-cohort",
-    "href": "mice/index.html#design-case-cohort",
-    "title": "Multiple Imputation",
-    "section": "Design: Case-Cohort",
-    "text": "Design: Case-Cohort\n\n\n\n\n\n\nCohort\n\n\nTotal N\n\n\nPCa Deaths\n\n\nPCa Dx\n\n\nPCa with Markers\n\n\nControl with Markers\n\n\nControl without Markers\n\n\n\n\n\n\nAge > 60\n\n\n5263\n\n\n227\n\n\n780\n\n\n702\n\n\n1753\n\n\n2730\n\n\n\n\n\n\nPCa = Prostate Cancer\n\n\n\n\n\n\nStudy Aims:\n\nEstimate the distribution of PSA.\nAre the kallikrein markers better at predicting prostate cancer death than PSA alone?\nEstimate the reclassification using additional markers compared to PSA alone.\n\n\n\n\nMultiple Imputation"
+    "text": "MICE Review\nMultiple imputation consists of three steps:\n\nImputation step. M imputations (completed datasets) are generated under some chosen imputation model.\nCompleted-data analysis (estimation) step. The desired analysis is performed separately on each imputation m = 1, . . . , M. This is called completed-data analysis and is the primary analysis to be performed once missing data have been imputed.\nPooling step. The results obtained from M completed-data analyses are combined into a single multiple-imputation result. Variance is estimated by taking into the account with variability within each of the ‘completed-data’ analyses, and the variation across the M analyses.\n\n\n\n\nMultiple Imputation"
   },
   {
     "objectID": "reproducibility/index.html#acknowledgements",

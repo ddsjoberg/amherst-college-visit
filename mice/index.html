@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.251">
+  <meta name="generator" content="quarto-1.2.269">
 
   <meta name="author" content="Daniel D. Sjoberg">
   <title>Clinical Reporting with {gtsummary} - Multiple Imputation</title>
@@ -334,18 +334,25 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="center">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Multiple Imputation</h1>
-  <p class="author">Daniel D. Sjoberg</p>
-</section>
 
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Daniel D. Sjoberg 
+</div>
+</div>
+</div>
+
+</section>
 <section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
 
 </section>
-<section id="acknowledgements" class="slide level2">
-<h2>Acknowledgements</h2>
+<section id="about" class="slide level2">
+<h2>About</h2>
 <div class="columns v-center-container">
 <div class="column" style="width:60%;">
 <p><img src="images/logo-mskcc.png" alt="drawing" width="70%"></p>
@@ -380,92 +387,29 @@
 </div>
 </section></section>
 <section>
-<section id="survival-analysis-review" class="title-slide slide level1 center">
-<h1>Survival Analysis Review</h1>
-
-</section>
-<section id="pdf-cdf-and-survival" class="slide level2">
-<h2>PDF, CDF, and Survival</h2>
-<p><span class="math display">\[
-f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
-\]</span></p>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="pdf-cdf-and-survival-1" class="slide level2">
-<h2>PDF, CDF, and Survival</h2>
-<p><span class="math display">\[
-F(x) = \int_{t = 0}^{x} f(t); \quad f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
-\]</span></p>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="pdf-cdf-and-survival-2" class="slide level2">
-<h2>PDF, CDF, and Survival</h2>
-<p><span class="math display">\[
-S(t) = 1 - F(t); \quad F(x) = \int_{t = 0}^{x} f(t); \quad f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
-\]</span></p>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="how-to-estimate-this-distribution" class="slide level2">
-<h2>How to estimate this distribution?</h2>
-<p><span class="math display">\[
-f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
-\]</span></p>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="what-if-i-can-only-follow-for-2-years" class="slide level2">
-<h2>What if I can only follow for 2 years?</h2>
-<p><span class="math display">\[
-f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
-\]</span></p>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="what-if-i-can-only-follow-for-2-years-1" class="slide level2">
-<h2>What if I can only follow for 2 years?</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section id="what-if-i-can-only-follow-for-2-years-2" class="slide level2">
-<h2>What if I can only follow for 2 years?</h2>
-<ul>
-<li><p>A key feature of survival data is <strong>censoring</strong></p></li>
-<li><p>A subject may be censored due to:</p>
-<ul>
-<li><p>Loss to follow-up</p></li>
-<li><p>Withdrawal from study</p></li>
-<li><p>No event by end of fixed study period</p></li>
-</ul></li>
-<li><p>Survival analysis techniques provide a way to appropriately account for censored patients in the analysis</p></li>
-<li><p>The Kaplan-Meier estimate of survival probability at a given time is the product of these conditional probabilities up until that given time.</p></li>
-</ul>
-</section></section>
-<section>
-<section id="multiple-imputation-review" class="title-slide slide level1 center">
-<h1>Multiple Imputation Review</h1>
-
-</section>
-<section id="mice-review" class="slide level2">
-<h2>MICE Review</h2>
-<p>Multiple imputation consists of three steps:</p>
-<ol type="1">
-<li><p>Imputation step. M imputations (completed datasets) are generated under some chosen imputation model.</p></li>
-<li><p>Completed-data analysis (estimation) step. The desired analysis is performed separately on each imputation m = 1, . . . , M. This is called completed-data analysis and is the primary analysis to be performed once missing data have been imputed.</p></li>
-<li><p>Pooling step. The results obtained from M completed-data analyses are combined into a single multiple-imputation result. Variance is estimated by taking into the account with variability within each of the ‘completed-data’ analyses, and the variation across the M analyses.</p></li>
-</ol>
-</section></section>
-<section>
 <section id="case-study" class="title-slide slide level1 center">
 <h1>Case Study</h1>
 
 </section>
 <section id="case-study-eu-article" class="slide level2">
 <h2>Case Study: EU Article</h2>
+<!-- ![](images/eu-article.png){fig-align="center"} -->
 
-<img data-src="images/eu-article.png" class="r-stretch quarto-figure-center"><ul>
+<img data-src="images/eu-article.png" class="r-stretch"><ul>
 <li>We’ll focus on the analyses among the participants &gt;60 years old</li>
 </ul>
 </section>
-<section id="design-case-cohort" class="slide level2">
-<h2>Design: Case-Cohort</h2>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_99324e6b17c9f0e4a276b04489f45c9c">
+<section id="study-design" class="slide level2">
+<h2>Study Design</h2>
+<p>What is the study design?</p>
+<ul>
+<li><p>Nested Case-Control</p></li>
+<li><p>A case-control study nested within a cohort</p></li>
+</ul>
+</section>
+<section id="study-design-nested-case-control" class="slide level2">
+<h2>Study Design: Nested Case-Control</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-2_745cf97aaf2a0e12718bd71c6d241767">
 
 <table style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif; display: table; border-collapse: collapse; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;">
 <thead style="border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -533,6 +477,96 @@ PCa = Prostate Cancer
 <li><p>Estimate the distribution of PSA.</p></li>
 <li><p>Are the kallikrein markers better at predicting prostate cancer death than PSA alone?</p></li>
 <li><p>Estimate the reclassification using additional markers compared to PSA alone.</p></li>
+</ol>
+</section>
+<section id="psa-distribution" class="slide level2">
+<h2>PSA Distribution</h2>
+
+<img data-src="images/psa-distribution.png" class="r-stretch quarto-figure-center"><p class="caption">Estimated Distribution of PSA</p></section>
+<section id="discrimination" class="slide level2">
+<h2>Discrimination</h2>
+
+<img data-src="images/klk-cindex.png" class="r-stretch"></section>
+<section id="reclassification" class="slide level2">
+<h2>Reclassification</h2>
+
+<img data-src="images/reclassified-risk-of-pca-death.png" class="r-stretch quarto-figure-center"><p class="caption">Risk of PCa Death</p><div class="smaller">
+<ul>
+<li><p>Risk of death from prostate cancer among men providing blood at age 60–73 yr who had PSA <strong><em>≥</em></strong>2.0 ng/ml, split by four-kallikrein panel risk at 7.5% at baseline.</p></li>
+<li><p>The black line indicates the risk of prostate cancer death among all men with baseline PSA <strong><em>≥</em></strong>2.0 ng/ml, gold line indicates the risk of prostate cancer death among men with PSA <strong><em>≥</em></strong>2.0 ng/ml and four-kallikrein panel score <strong><em>≥</em></strong>7.5% at baseline, and blue line indicates risk of prostate cancer death among men with PSA <strong><em>≥</em></strong>2.0 ng/ml and four-kallikrein panel score &lt;7.5% at baseline.</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="survival-analysis-review" class="title-slide slide level1 center">
+<h1>Survival Analysis Review</h1>
+
+</section>
+<section id="pdf-cdf-and-survival" class="slide level2">
+<h2>PDF, CDF, and Survival</h2>
+<p><span class="math display">\[
+f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+\]</span></p>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="pdf-cdf-and-survival-1" class="slide level2">
+<h2>PDF, CDF, and Survival</h2>
+<p><span class="math display">\[
+F(x) = \int_{t = 0}^{x} f(t); \quad f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+\]</span></p>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="pdf-cdf-and-survival-2" class="slide level2">
+<h2>PDF, CDF, and Survival</h2>
+<p><span class="math display">\[
+S(t) = 1 - F(t); \quad F(x) = \int_{t = 0}^{x} f(t); \quad f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+\]</span></p>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="how-to-estimate-this-distribution" class="slide level2">
+<h2>How to estimate this distribution?</h2>
+<p><span class="math display">\[
+f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+\]</span></p>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="what-if-i-can-only-follow-for-2-years" class="slide level2">
+<h2>What if I can only follow for 2 years?</h2>
+<p><span class="math display">\[
+f(x) = \frac{1}{\lambda} e^{\frac{x}{\lambda}}; \quad X \sim Exp(\lambda = 1.5)
+\]</span></p>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="what-if-i-can-only-follow-for-2-years-1" class="slide level2">
+<h2>What if I can only follow for 2 years?</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="what-if-i-can-only-follow-for-2-years-2" class="slide level2">
+<h2>What if I can only follow for 2 years?</h2>
+<ul>
+<li><p>A key feature of survival data is <strong>censoring</strong></p></li>
+<li><p>A subject may be censored due to:</p>
+<ul>
+<li><p>Loss to follow-up</p></li>
+<li><p>Withdrawal from study</p></li>
+<li><p>No event by end of fixed study period</p></li>
+</ul></li>
+<li><p>Survival analysis techniques provide a way to appropriately account for censored patients in the analysis</p></li>
+<li><p>The Kaplan-Meier estimate of survival probability at a given time is the product of these conditional probabilities up until that given time.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="multiple-imputation-review" class="title-slide slide level1 center">
+<h1>Multiple Imputation Review</h1>
+
+</section>
+<section id="mice-review" class="slide level2">
+<h2>MICE Review</h2>
+<p>Multiple imputation consists of three steps:</p>
+<ol type="1">
+<li><p>Imputation step. M imputations (completed datasets) are generated under some chosen imputation model.</p></li>
+<li><p>Completed-data analysis (estimation) step. The desired analysis is performed separately on each imputation m = 1, . . . , M. This is called completed-data analysis and is the primary analysis to be performed once missing data have been imputed.</p></li>
+<li><p>Pooling step. The results obtained from M completed-data analyses are combined into a single multiple-imputation result. Variance is estimated by taking into the account with variability within each of the ‘completed-data’ analyses, and the variation across the M analyses.</p></li>
 </ol>
 
 
@@ -759,12 +793,15 @@ PCa = Prostate Cancer
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -775,13 +812,6 @@ PCa = Prostate Cancer
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
@@ -833,7 +863,24 @@ PCa = Prostate Cancer
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -871,24 +918,42 @@ PCa = Prostate Cancer
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
     });
     </script>
