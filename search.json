@@ -126,11 +126,11 @@
     "text": "MICE Review\nMultiple imputation consists of three steps:\n\nImputation step. M imputations (completed datasets) are generated under some chosen imputation model.\nCompleted-data analysis (estimation) step. The desired analysis is performed separately on each imputation m = 1, . . . , M. This is called completed-data analysis and is the primary analysis to be performed once missing data have been imputed.\nPooling step. The results obtained from M completed-data analyses are combined into a single multiple-imputation result. Variance is estimated by taking into the account with variability within each of the ‘completed-data’ analyses, and the variation across the M analyses.\n\n\n\n\nMultiple Imputation"
   },
   {
-    "objectID": "reproducibility/index.html#acknowledgements",
-    "href": "reproducibility/index.html#acknowledgements",
+    "objectID": "reproducibility/index.html#about",
+    "href": "reproducibility/index.html#about",
     "title": "Reproducible Reporting with R + gtsummary",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\n\n\n\n\nThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA4.0)."
+    "section": "About",
+    "text": "About\n\n\n\n\nThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA4.0)."
   },
   {
     "objectID": "reproducibility/index.html#daniel-d.-sjoberg",
@@ -152,6 +152,13 @@
     "title": "Reproducible Reporting with R + gtsummary",
     "section": "Reproducibility Crisis",
     "text": "Reproducibility Crisis\n\n\n\nQuality of medical research is often low\nLow quality code in medical research part of the problem\nLow quality code is more likely to contain errors\nReproducibility is often cumbersome and time-consuming\n\n\n\n\n\n\n\nhttps://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970"
+  },
+  {
+    "objectID": "reproducibility/index.html#european-urology",
+    "href": "reproducibility/index.html#european-urology",
+    "title": "Reproducible Reporting with R + gtsummary",
+    "section": "European Urology",
+    "text": "European Urology\n\nEuropean Urology journal asked all accepted manuscripts a few questions prior to publication:\n\nWas any code used to prepare these results?\nAre you willing to share that code?\n\nOf 314 accepted manuscripts with non-trivial analyses, only 40 reported that they used code.\nOf the 40, 18 submitted code to the journal\nAll 18 sets of submitted code had some issues (no comments in the code, large amounts of repeated code prone to error, results were not exported reproducibly with R markdown/SAS ODS, etc)"
   },
   {
     "objectID": "reproducibility/index.html#gtsummary-overview",
@@ -376,13 +383,6 @@
     "title": "Reproducible Reporting with R + gtsummary",
     "section": "{gtsummary} reporting with inline_text()",
     "text": "{gtsummary} reporting with inline_text()\n\n\n\n\n\n\nCharacteristic\n\n\nN\n\n\nOR1\n\n\n95% CI1\n\n\np-value\n\n\n\n\n\n\nChemotherapy Treatment\n\n\n193\n\n\n\n\n\n\n\n\n\n\n    Drug A\n\n\n\n\n—\n\n\n—\n\n\n\n\n\n\n    Drug B\n\n\n\n\n1.21\n\n\n0.66, 2.24\n\n\n0.5\n\n\n\n\nAge\n\n\n183\n\n\n1.02\n\n\n1.00, 1.04\n\n\n0.10\n\n\n\n\nGrade\n\n\n193\n\n\n\n\n\n\n\n\n\n\n    I\n\n\n\n\n—\n\n\n—\n\n\n\n\n\n\n    II\n\n\n\n\n0.95\n\n\n0.45, 2.00\n\n\n0.9\n\n\n\n\n    III\n\n\n\n\n1.10\n\n\n0.52, 2.29\n\n\n0.8\n\n\n\n\n\n\n1 OR = Odds Ratio, CI = Confidence Interval\n\n\n\n\n\n\nIn Code: The odds ratio for age is `r inline_text(tbl_uvreg, variable = age)`\nIn Report: The odds ratio for age is 1.02 (95% CI 1.00, 1.04; p=0.10)"
-  },
-  {
-    "objectID": "reproducibility/index.html#gtsummary-reporting-with-inline_text-2",
-    "href": "reproducibility/index.html#gtsummary-reporting-with-inline_text-2",
-    "title": "Reproducible Reporting with R + gtsummary",
-    "section": "{gtsummary} reporting with inline_text()",
-    "text": "{gtsummary} reporting with inline_text()\n\n\ngts_small_summary <-\n  trial %>% \n  tbl_summary(\n    by = trt,\n    include = marker,\n    missing = \"no\"\n  ) %>%\n  add_difference()\ngts_small_summary\n\n\n\n\n\n\nCharacteristic\n\n\nDrug A, N = 981\n\n\nDrug B, N = 1021\n\n\nDifference2\n\n\n95% CI2,3\n\n\np-value2\n\n\n\n\n\n\nMarker Level (ng/mL)\n\n\n0.84 (0.24, 1.57)\n\n\n0.52 (0.19, 1.20)\n\n\n0.20\n\n\n-0.05, 0.44\n\n\n0.12\n\n\n\n\n\n\n1 Median (IQR)\n\n\n\n\n2 Welch Two Sample t-test\n\n\n\n\n3 CI = Confidence Interval\n\n\n\n\n\n\n\n\n\n\nIn Code:\n\nThe median (IQR) marker among participants randomized to Drug A was `r inline_text(gts_small_summary, variable = marker, column = 'Drug A')`.\nThe median (IQR) age among participants randomized to Drug A was `r inline_text(gts_small_summary, variable = marker, column = 'Drug A', pattern = '{median}')`.\nThe difference in marker level was `r inline_text(gts_small_summary, variable = marker, pattern = '{estimate} (95% {ci})')`.\n\n\n\n\nIn Report:\n\nThe median (IQR) marker among participants randomized to Drug A was 0.84 (0.24, 1.57).\nThe median (IQR) age among participants randomized to Drug A was 0.84.\nThe difference in marker level was 0.20 (95% -0.05, 0.44)."
   },
   {
     "objectID": "reproducibility/index.html#tbl_merge-for-side-by-side-tables",
